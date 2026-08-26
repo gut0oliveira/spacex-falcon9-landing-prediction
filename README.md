@@ -2,7 +2,7 @@
 
 <p align="center">Projetos de Ciência de Dados envolvendo coleta, preparação, análise, visualização e modelagem preditiva utilizando Python.</p>
 
-## Sobre o repositório
+##
 
 Este repositório reúne projetos desenvolvidos para aplicar diferentes etapas do ciclo de **Ciência de Dados**, desde a coleta e preparação dos dados até a análise exploratória, visualização e construção de modelos de Machine Learning.
 
