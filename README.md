@@ -1,4 +1,4 @@
-<h1 align="center">Data Science</h1>
+<h1 align="center">Ciência de Dados</h1>
 
 <p align="center">Projetos de Ciência de Dados envolvendo coleta, preparação, análise, visualização e modelagem preditiva utilizando Python.</p>
 
