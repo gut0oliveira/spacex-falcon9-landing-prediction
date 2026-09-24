@@ -1,18 +1,17 @@
+from pathlib import Path
+
 import pandas as pd
-import dash
-import dash_html_components as html
-import dash_core_components as dcc
-from dash.dependencies import Input, Output
+from dash import Dash, Input, Output, dcc, html
 import plotly.express as px
 
-# Read the airline data into pandas dataframe
-spacex_df = pd.read_csv("spacex_launch_dash.csv")
-print(spacex_df.head())  # Debug: Print the first few rows of the dataframe
+# Load the launch data relative to this file so the app works from any directory.
+DATA_PATH = Path(__file__).with_name("spacex_launch_dash.csv")
+spacex_df = pd.read_csv(DATA_PATH)
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
 # Create a dash application
-app = dash.Dash(__name__)
+app = Dash(__name__)
 
 # Create an app layout
 app.layout = html.Div(children=[
@@ -64,7 +63,6 @@ def get_pie_chart(entered_site):
         filtered_df = spacex_df[spacex_df['Launch Site'] == entered_site]
         success_counts = filtered_df['class'].value_counts().reset_index(name='count')
         success_counts.columns = ['class', 'count']
-        print(success_counts)  # Debug: Print the success counts for the selected site
         fig = px.pie(success_counts, values='count', names='class', 
                      title=f'Total Success Launches for Site {entered_site}')
     
@@ -102,4 +100,4 @@ def update_scatter_chart(selected_site, payload_range):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(port=8080)
+    app.run(debug=True, port=8050)
